@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b0iajoyy5w551"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b0iajoyy5w551"]
 
 [sub_resource type="SystemFont" id="SystemFont_v6wrm"]
 font_names = PackedStringArray("Monospace")
@@ -35,6 +35,25 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="SystemFont" id="SystemFont_7uusv"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8aw70"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="SystemFont" id="SystemFont_27v6b"]
 font_names = PackedStringArray("Monospace")
 
@@ -56,20 +75,33 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6wrm"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_v6wrm"]
+color = Color(0, 0, 0, 0)
+vertical = true
+
 [resource]
 Button/font_sizes/font_size = 64
 Button/fonts/font = SubResource("SystemFont_v6wrm")
 Button/styles/hover = SubResource("StyleBoxFlat_27v6b")
 Button/styles/normal = SubResource("StyleBoxFlat_v6wrm")
 Button/styles/pressed = SubResource("StyleBoxFlat_27v6b")
+HBoxContainer/constants/separation = 10
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 64
+Label/fonts/font = SubResource("SystemFont_7uusv")
+Label/styles/normal = SubResource("StyleBoxFlat_8aw70")
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
 LineEdit/colors/font_color = Color(0, 0, 0, 1)
-LineEdit/colors/font_placeholder_color = Color(0.140447, 0.140447, 0.140447, 0.6)
+LineEdit/colors/font_placeholder_color = Color(0.314316, 0.314316, 0.314316, 0.6)
+LineEdit/colors/selection_color = Color(0, 0, 0, 1)
 LineEdit/font_sizes/font_size = 64
 LineEdit/fonts/font = SubResource("SystemFont_27v6b")
-LineEdit/styles/focus = SubResource("StyleBoxFlat_7uusv")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_7uusv")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_v6wrm")
+VBoxContainer/constants/separation = 10
+VSeparator/constants/separation = 10
+VSeparator/styles/separator = SubResource("StyleBoxLine_v6wrm")

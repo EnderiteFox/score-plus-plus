@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://tgbdo22xiy1u" path="res://ui/player_ui/player_ui.gd" id="1_x5rrd"]
 
 [node name="PlayerUI" type="PanelContainer"]
-offset_right = 261.0
-offset_bottom = 31.0
+offset_right = 759.0
+offset_bottom = 108.0
 script = ExtResource("1_x5rrd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -19,12 +19,11 @@ text = "Delete"
 [node name="PlayerName" type="LineEdit" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-placeholder_text = "Nom du joueur"
+placeholder_text = "Player name"
 expand_to_text_length = true
 
-[node name="PlayerScore" type="LineEdit" parent="HBoxContainer"]
+[node name="PlayerScore" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 1
 text = "0"
-expand_to_text_length = true
-virtual_keyboard_type = 3

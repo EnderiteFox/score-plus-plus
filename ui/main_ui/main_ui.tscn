@@ -54,3 +54,98 @@ text = "Add player"
 
 [node name="PlayerEditPanel" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayerEditPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Numpad" type="VBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad"]
+layout_mode = 2
+
+[node name="1" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+
+[node name="2" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2"
+
+[node name="3" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad"]
+layout_mode = 2
+
+[node name="4" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4"
+
+[node name="5" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+
+[node name="6" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "6"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad"]
+layout_mode = 2
+
+[node name="7" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "7"
+
+[node name="8" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "8"
+
+[node name="9" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad"]
+layout_mode = 2
+
+[node name="0" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/Numpad/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "+"
+
+[node name="SetButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Set"
