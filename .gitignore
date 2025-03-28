@@ -1,0 +1,10 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Editor ignores
+.idea
+
+# Export folder and export configuration
+export/
+export_presets.cfg

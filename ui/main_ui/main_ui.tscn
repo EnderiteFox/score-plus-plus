@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfct5sudsqj76"]
+
+[ext_resource type="Script" uid="uid://cle5eekmroq40" path="res://ui/main_ui/main_ui.gd" id="1_16758"]
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_16758")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.513726, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="ElementsList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="PlayerList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer/ElementsList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="AddPlayerButton" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/ElementsList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Add player"
+
+[node name="PlayerEditPanel" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2

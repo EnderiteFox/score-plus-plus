@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://diusqu2gxbitm"]
+
+[ext_resource type="Script" uid="uid://tgbdo22xiy1u" path="res://ui/player_ui/player_ui.gd" id="1_x5rrd"]
+
+[node name="PlayerUI" type="PanelContainer"]
+offset_right = 261.0
+offset_bottom = 31.0
+script = ExtResource("1_x5rrd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DeleteButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Delete"
+
+[node name="PlayerName" type="LineEdit" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Nom du joueur"
+expand_to_text_length = true
+
+[node name="PlayerScore" type="LineEdit" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+expand_to_text_length = true
+virtual_keyboard_type = 3
