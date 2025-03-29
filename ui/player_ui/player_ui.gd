@@ -5,9 +5,12 @@ signal selected
 signal deleted
 
 @onready var delete_button: Button = %DeleteButton
+@onready var player_name: LineEdit = %PlayerName
 
 func _ready() -> void:
 	delete_button.pressed.connect(_on_player_delete)
+	player_name.focus_entered.connect(selected.emit)
+	player_name.text_changed.connect(selected.emit.unbind(1))
 
 	
 func _on_player_delete() -> void:
