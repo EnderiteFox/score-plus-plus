@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b0iajoyy5w551"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b0iajoyy5w551"]
 
 [sub_resource type="SystemFont" id="SystemFont_v6wrm"]
 font_names = PackedStringArray("Monospace")
@@ -75,6 +75,23 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6wrm"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqcwn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_v6wrm"]
 color = Color(0, 0, 0, 0)
 vertical = true
@@ -102,6 +119,8 @@ MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_v6wrm")
+Selected/base_type = &"PanelContainer"
+Selected/styles/panel = SubResource("StyleBoxFlat_eqcwn")
 VBoxContainer/constants/separation = 10
 VSeparator/constants/separation = 10
 VSeparator/styles/separator = SubResource("StyleBoxLine_v6wrm")
