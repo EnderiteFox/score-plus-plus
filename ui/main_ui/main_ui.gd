@@ -27,6 +27,9 @@ func _on_add_player() -> void:
 
 	
 func _on_player_select(player_ui: PlayerUI) -> void:
+	if selected_player == player_ui:
+		return
+	
 	if selected_player != null:
 		selected_player.unselect()
 	
