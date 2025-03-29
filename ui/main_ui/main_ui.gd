@@ -3,7 +3,9 @@ extends Control
 
 @onready var add_player_button: Button = %AddPlayerButton
 @onready var player_list: Control = %PlayerList
+
 @onready var player_edit_panel: Control = %PlayerEditPanel
+@onready var player_edit_line: LineEdit = %PlayerEditLine
 
 var player_ui_scene: PackedScene = preload("res://ui/player_ui/player_ui.tscn")
 
@@ -31,6 +33,7 @@ func _on_player_select(player_ui: PlayerUI) -> void:
 	player_ui.select()
 	selected_player = player_ui
 	player_edit_panel.visible = true
+	player_edit_line.text = ""
 	
 
 func _on_player_delete(player_ui: PlayerUI) -> void:
@@ -38,6 +41,7 @@ func _on_player_delete(player_ui: PlayerUI) -> void:
 		player_ui.unselect()
 		selected_player = null
 		player_edit_panel.visible = false
+		player_edit_line.text = ""
 	
 
 func _gui_input(event: InputEvent) -> void:
@@ -46,3 +50,4 @@ func _gui_input(event: InputEvent) -> void:
 			selected_player.unselect()
 			selected_player = null
 			player_edit_panel.visible = false
+			player_edit_line.text = ""
