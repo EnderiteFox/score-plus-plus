@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfct5sudsqj76"]
+[gd_scene load_steps=6 format=3 uid="uid://bfct5sudsqj76"]
 
 [ext_resource type="Script" uid="uid://cle5eekmroq40" path="res://ui/main_ui/main_ui.gd" id="1_16758"]
 [ext_resource type="Script" uid="uid://c8jew4lrc3st4" path="res://ui/numpad_button/numpad_button.gd" id="2_7miss"]
+[ext_resource type="Script" uid="uid://biipk3j3p1mky" path="res://ui/edit_action_button/set_edit_action.gd" id="3_3jxcf"]
+[ext_resource type="Script" uid="uid://cogogjprxotyf" path="res://ui/edit_action_button/add_edit_action.gd" id="3_bsycw"]
+[ext_resource type="Script" uid="uid://bdn2vfj5impgh" path="res://ui/edit_action_button/substract_edit_action.gd" id="4_bp13i"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -160,21 +163,25 @@ player_edit_line = NodePath("../../../../PlayerEditLine")
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons"]
 layout_mode = 2
 
-[node name="ActionButtons" type="VBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons"]
+[node name="EditActionButtons" type="VBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AddButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/ActionButtons"]
+[node name="AddButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/EditActionButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "+"
+script = ExtResource("3_bsycw")
 
-[node name="SubstractButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/ActionButtons"]
+[node name="SubstractButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/EditActionButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "-"
+script = ExtResource("4_bp13i")
 
-[node name="SetButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/ActionButtons"]
+[node name="SetButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/EditActionButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Set"
+script = ExtResource("3_3jxcf")

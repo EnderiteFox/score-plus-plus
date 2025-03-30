@@ -6,6 +6,14 @@ signal deleted
 
 @onready var delete_button: Button = %DeleteButton
 @onready var player_name: LineEdit = %PlayerName
+@onready var score_label: Label = %PlayerScore
+
+var score: float = 0:
+	set(new_score):
+		# TODO: Add a setting to choose weither we want integers or floats
+		score = int(new_score)
+		score_label.text = str(int(score))
+		
 
 func _ready() -> void:
 	delete_button.pressed.connect(_on_player_delete)
