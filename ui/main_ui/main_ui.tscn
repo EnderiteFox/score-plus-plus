@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfct5sudsqj76"]
+[gd_scene load_steps=7 format=3 uid="uid://bfct5sudsqj76"]
 
 [ext_resource type="Script" uid="uid://cle5eekmroq40" path="res://ui/main_ui/main_ui.gd" id="1_16758"]
 [ext_resource type="Script" uid="uid://c8jew4lrc3st4" path="res://ui/numpad_button/numpad_button.gd" id="2_7miss"]
 [ext_resource type="Script" uid="uid://biipk3j3p1mky" path="res://ui/edit_action_button/set_edit_action.gd" id="3_3jxcf"]
 [ext_resource type="Script" uid="uid://cogogjprxotyf" path="res://ui/edit_action_button/add_edit_action.gd" id="3_bsycw"]
+[ext_resource type="Script" uid="uid://cegqlp4nh0eq6" path="res://ui/numpad_button/backspace_button.gd" id="3_c7c5c"]
 [ext_resource type="Script" uid="uid://bdn2vfj5impgh" path="res://ui/edit_action_button/substract_edit_action.gd" id="4_bp13i"]
 
 [node name="MainUI" type="Control"]
@@ -158,6 +159,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
 script = ExtResource("2_7miss")
+player_edit_line = NodePath("../../../../PlayerEditLine")
+
+[node name="Backspace" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer4" node_paths=PackedStringArray("player_edit_line")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "⇦"
+script = ExtResource("3_c7c5c")
 player_edit_line = NodePath("../../../../PlayerEditLine")
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons"]
