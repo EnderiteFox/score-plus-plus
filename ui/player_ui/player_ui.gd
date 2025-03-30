@@ -30,4 +30,5 @@ func select() -> void:
 	
 func unselect() -> void:
 	self.theme_type_variation = ""
+	player_name.focus_mode = FOCUS_NONE
 			
