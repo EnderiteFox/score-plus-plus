@@ -1,11 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfct5sudsqj76"]
+[gd_scene load_steps=4 format=3 uid="uid://bfct5sudsqj76"]
 
-[ext_resource type="Script" uid="uid://cle5eekmroq40" path="res://ui/main_ui/main_ui.gd" id="1_16758"]
-[ext_resource type="Script" uid="uid://c8jew4lrc3st4" path="res://ui/numpad_button/numpad_button.gd" id="2_7miss"]
-[ext_resource type="Script" uid="uid://biipk3j3p1mky" path="res://ui/edit_action_button/set_edit_action.gd" id="3_3jxcf"]
-[ext_resource type="Script" uid="uid://cogogjprxotyf" path="res://ui/edit_action_button/add_edit_action.gd" id="3_bsycw"]
-[ext_resource type="Script" uid="uid://cegqlp4nh0eq6" path="res://ui/numpad_button/backspace_button.gd" id="3_c7c5c"]
-[ext_resource type="Script" uid="uid://bdn2vfj5impgh" path="res://ui/edit_action_button/substract_edit_action.gd" id="4_bp13i"]
+[ext_resource type="PackedScene" uid="uid://b0lhhhsq3cx0u" path="res://ui/score_tab/score_tab.tscn" id="2_7miss"]
+[ext_resource type="PackedScene" uid="uid://wfoawl85lwko" path="res://ui/history_tab/history_tab.tscn" id="3_3jxcf"]
+[ext_resource type="PackedScene" uid="uid://vvix07tir73f" path="res://ui/settings_tab/SettingsTab.tscn" id="3_bsycw"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -14,7 +11,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_16758")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -24,172 +20,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-color = Color(0, 0.513726, 1, 1)
+color = Color(0.2, 0.2, 0.2, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 0
+clip_tabs = false
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="Score" parent="TabContainer" instance=ExtResource("2_7miss")]
 layout_mode = 2
-size_flags_vertical = 3
+metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="History" parent="TabContainer" instance=ExtResource("3_3jxcf")]
+visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
-[node name="ElementsList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="Settings" parent="TabContainer" instance=ExtResource("3_bsycw")]
+visible = false
 layout_mode = 2
-size_flags_vertical = 0
-
-[node name="PlayerList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer/ElementsList"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="AddPlayerButton" type="Button" parent="VBoxContainer/ScrollContainer/MarginContainer/ElementsList"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Add player"
-
-[node name="PlayerEditPanel" type="PanelContainer" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayerEditPanel"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer"]
-layout_mode = 2
-
-[node name="PlayerEditLine" type="LineEdit" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="EditButtons" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Numpad" type="VBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad"]
-layout_mode = 2
-
-[node name="1" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "1"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="2" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "2"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="3" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "3"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad"]
-layout_mode = 2
-
-[node name="4" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer2" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "4"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="5" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer2" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "5"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="6" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer2" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "6"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad"]
-layout_mode = 2
-
-[node name="7" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer3" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "7"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="8" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer3" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "8"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="9" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer3" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "9"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad"]
-layout_mode = 2
-
-[node name="0" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer4" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-script = ExtResource("2_7miss")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="Backspace" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer4" node_paths=PackedStringArray("player_edit_line")]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "⇦"
-script = ExtResource("3_c7c5c")
-player_edit_line = NodePath("../../../../PlayerEditLine")
-
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons"]
-layout_mode = 2
-
-[node name="EditActionButtons" type="VBoxContainer" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="AddButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/EditActionButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "+"
-script = ExtResource("3_bsycw")
-
-[node name="SubstractButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/EditActionButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "-"
-script = ExtResource("4_bp13i")
-
-[node name="SetButton" type="Button" parent="VBoxContainer/PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/EditActionButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Set"
-script = ExtResource("3_3jxcf")
+metadata/_tab_index = 2

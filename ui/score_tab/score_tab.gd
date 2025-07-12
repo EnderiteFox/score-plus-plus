@@ -1,4 +1,4 @@
-class_name MainUI
+class_name ScoreTab
 extends Control
 
 @onready var add_player_button: Button = %AddPlayerButton
