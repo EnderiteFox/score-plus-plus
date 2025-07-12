@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b0iajoyy5w551"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b0iajoyy5w551"]
 
 [sub_resource type="SystemFont" id="SystemFont_v6wrm"]
 font_names = PackedStringArray("Monospace")
@@ -8,32 +8,32 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-bg_color = Color(0.128421, 0.373102, 1, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0, 0, 0.8, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es402"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.4, 0.4, 0.4, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6wrm"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-bg_color = Color(0, 0.254902, 1, 1)
+bg_color = Color(0.5, 0.5, 0.5, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0, 0, 0.8, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="SystemFont" id="SystemFont_7uusv"]
 font_names = PackedStringArray("Monospace")
@@ -48,11 +48,7 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+border_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_27v6b"]
 font_names = PackedStringArray("Monospace")
@@ -67,13 +63,13 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+border_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6wrm"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqcwn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -83,14 +79,12 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 expand_margin_left = 3.0
 expand_margin_top = 3.0
 expand_margin_right = 3.0
 expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27v6b"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_v6wrm"]
 color = Color(0, 0, 0, 0)
@@ -100,8 +94,9 @@ vertical = true
 Button/font_sizes/font_size = 64
 Button/fonts/font = SubResource("SystemFont_v6wrm")
 Button/styles/hover = SubResource("StyleBoxFlat_27v6b")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_es402")
 Button/styles/normal = SubResource("StyleBoxFlat_v6wrm")
-Button/styles/pressed = SubResource("StyleBoxFlat_27v6b")
+Button/styles/pressed = SubResource("StyleBoxFlat_es402")
 HBoxContainer/constants/separation = 10
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 64
@@ -121,6 +116,8 @@ MarginContainer/constants/margin_top = 10
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_v6wrm")
 Selected/base_type = &"PanelContainer"
 Selected/styles/panel = SubResource("StyleBoxFlat_eqcwn")
+TabContainer/font_sizes/font_size = 29
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_27v6b")
 VBoxContainer/constants/separation = 10
 VSeparator/constants/separation = 10
 VSeparator/styles/separator = SubResource("StyleBoxLine_v6wrm")
