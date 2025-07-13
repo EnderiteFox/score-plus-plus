@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b0lhhhsq3cx0u" path="res://ui/score_tab/score_tab.tscn" id="2_7miss"]
 [ext_resource type="PackedScene" uid="uid://wfoawl85lwko" path="res://ui/history_tab/history_tab.tscn" id="3_3jxcf"]
-[ext_resource type="PackedScene" uid="uid://vvix07tir73f" path="res://ui/settings_tab/SettingsTab.tscn" id="3_bsycw"]
+[ext_resource type="PackedScene" uid="uid://vvix07tir73f" path="res://ui/settings_tab/settings_tab.tscn" id="3_bsycw"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3

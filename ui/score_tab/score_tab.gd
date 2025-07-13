@@ -7,12 +7,15 @@ extends Control
 @onready var player_edit_panel: Control = %PlayerEditPanel
 @onready var player_edit_line: LineEdit = %PlayerEditLine
 @onready var player_edit_buttons: Node = %EditActionButtons
+@onready var numpad_dot_button: Button = %NumpadDotButton
 
 var player_ui_scene: PackedScene = preload("res://ui/player_ui/player_ui.tscn")
 
 var selected_player: PlayerUI = null
 
 func _ready() -> void:
+	Main.score = self
+	
 	add_player_button.pressed.connect(_on_add_player)
 	player_edit_panel.visible = false
 	
