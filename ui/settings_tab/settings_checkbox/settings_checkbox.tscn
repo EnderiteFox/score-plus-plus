@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://nvq6idev7pfb"]
+
+[ext_resource type="Script" uid="uid://f135c2vslsmx" path="res://ui/settings_tab/settings_checkbox/settings_checkbox.gd" id="1_cf046"]
+[ext_resource type="Texture2D" uid="uid://dde0ospt3nk0v" path="res://ui/settings_tab/settings_checkbox/toggle_on.svg" id="2_xuawn"]
+[ext_resource type="Texture2D" uid="uid://crkc08oyorgab" path="res://ui/settings_tab/settings_checkbox/toggle_off.svg" id="3_i867q"]
+
+[node name="SettingsCheckbox" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 108.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SettingsCheckbox"
+script = ExtResource("1_cf046")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingTitle" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme_type_variation = &"SettingsCheckboxTitle"
+text = "Setting Title"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_icons/checked = ExtResource("2_xuawn")
+theme_override_icons/unchecked = ExtResource("3_i867q")
+button_mask = 0
+flat = true
+
+[node name="SettingDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+mouse_filter = 1
+theme_type_variation = &"SettingsCheckboxDescription"
+text = "Description for a setting that doesn't exist"
+autowrap_mode = 3

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b0iajoyy5w551"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://b0iajoyy5w551"]
 
 [sub_resource type="SystemFont" id="SystemFont_v6wrm"]
 font_names = PackedStringArray("Monospace")
@@ -65,12 +65,6 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.5, 0.5, 0.5, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6wrm"]
-content_margin_left = 3.0
-content_margin_top = 3.0
-content_margin_right = 3.0
-content_margin_bottom = 3.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqcwn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 draw_center = false
@@ -83,6 +77,15 @@ expand_margin_left = 3.0
 expand_margin_top = 3.0
 expand_margin_right = 3.0
 expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r5ox"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8aw70"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7uusv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6wrm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27v6b"]
 
@@ -113,9 +116,22 @@ MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
-PanelContainer/styles/panel = SubResource("StyleBoxEmpty_v6wrm")
+PanelContainer/styles/panel = null
 Selected/base_type = &"PanelContainer"
 Selected/styles/panel = SubResource("StyleBoxFlat_eqcwn")
+SettingsCategory/base_type = &"PanelContainer"
+SettingsCategory/styles/panel = SubResource("StyleBoxFlat_6r5ox")
+SettingsCheckboxDescription/base_type = &"Label"
+SettingsCheckboxDescription/colors/font_color = Color(0.58, 0.58, 0.58, 1)
+SettingsCheckboxDescription/font_sizes/font_size = 26
+SettingsCheckboxDescription/styles/normal = SubResource("StyleBoxEmpty_8aw70")
+SettingsCheckboxTitle/base_type = &"Label"
+SettingsCheckboxTitle/colors/font_color = Color(1, 1, 1, 1)
+SettingsCheckboxTitle/font_sizes/font_size = 32
+SettingsCheckboxTitle/styles/normal = SubResource("StyleBoxEmpty_7uusv")
+SettingsTitle/base_type = &"Label"
+SettingsTitle/colors/font_color = Color(1, 1, 1, 1)
+SettingsTitle/styles/normal = SubResource("StyleBoxEmpty_v6wrm")
 TabContainer/font_sizes/font_size = 29
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_27v6b")
 VBoxContainer/constants/separation = 10

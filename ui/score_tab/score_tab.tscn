@@ -146,6 +146,14 @@ text = "0"
 script = ExtResource("1_75xce")
 player_edit_line = NodePath("../../../../PlayerEditLine")
 
+[node name="NumpadDotButton" type="Button" parent="PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer4" node_paths=PackedStringArray("player_edit_line")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "."
+script = ExtResource("1_75xce")
+player_edit_line = NodePath("../../../../PlayerEditLine")
+
 [node name="Backspace" type="Button" parent="PlayerEditPanel/MarginContainer/VBoxContainer/EditButtons/Numpad/HBoxContainer4" node_paths=PackedStringArray("player_edit_line")]
 layout_mode = 2
 size_flags_horizontal = 3

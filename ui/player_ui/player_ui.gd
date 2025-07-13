@@ -11,8 +11,12 @@ signal deleted
 var score: float = 0:
 	set(new_score):
 		# TODO: Add a setting to choose weither we want integers or floats
-		score = int(new_score)
-		score_label.text = str(int(score))
+		if Main.settings.integer_score:
+			score = int(new_score)
+			score_label.text = str(int(new_score))
+		else:
+			score = new_score
+			score_label.text = str(score)
 		
 
 func _ready() -> void:
