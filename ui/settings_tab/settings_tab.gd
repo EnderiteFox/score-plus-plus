@@ -5,7 +5,6 @@ const save_path: String = "user://settings.ini"
 
 @export var integer_score_checkbox: SettingsCheckbox
 @export var persistent_players_checkbox: SettingsCheckbox
-# TODO: Implement persistent players
 @export var normalized_history_checkbox: SettingsCheckbox
 # TODO: Implement score history
 # TODO: Implement normalized history
@@ -89,7 +88,7 @@ func load_settings() -> void:
 			return
 		
 	integer_score = config_file.get_value("Settings", "integer_score", true)
-	persistent_players = config_file.get_value("Settings", "persistent_players", false)
+	persistent_players = config_file.get_value("Settings", "persistent_players", true)
 	normalized_history = config_file.get_value("Settings", "normalized_history", true)
 	
 	if persistent_players:
