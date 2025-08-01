@@ -9,7 +9,7 @@ extends Control
 @onready var player_edit_buttons: Node = %EditActionButtons
 @onready var numpad_dot_button: Button = %NumpadDotButton
 
-var player_ui_scene: PackedScene = preload("res://ui/player_ui/player_ui.tscn")
+var player_ui_scene: PackedScene = preload("uid://diusqu2gxbitm")
 
 var selected_player: PlayerUI = null
 
