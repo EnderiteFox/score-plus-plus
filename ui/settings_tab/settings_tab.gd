@@ -10,8 +10,6 @@ const save_path: String = "user://settings.ini"
 # TODO: Implement score history
 # TODO: Implement normalized history
 
-@onready var apply_button: Button = %ApplyButton
-
 var integer_score: bool: set = _on_set_integer_score
 
 var persistent_players: bool:
@@ -29,7 +27,14 @@ var normalized_history: bool:
 func _ready() -> void:
 	Main.settings = self
 	load_settings()
-	apply_button.pressed.connect(save_settings)
+	
+	
+func _notification(notif) -> void:
+	if notif == NOTIFICATION_WM_CLOSE_REQUEST or notif == NOTIFICATION_WM_GO_BACK_REQUEST:
+		save_settings()
+		get_tree().quit()
+	elif notif == NOTIFICATION_APPLICATION_PAUSED:
+		save_settings()
 	
 	
 func _on_set_integer_score(new_val: bool) -> void:
@@ -57,6 +62,13 @@ func save_settings() -> void:
 	config_file.set_value("Settings", "persistent_players", persistent_players)
 	config_file.set_value("Settings", "normalized_history", normalized_history)
 	
+	if persistent_players:
+		var players: Dictionary[String, float] = {}
+		for player_ui in Main.score.player_list.get_children():
+			if player_ui is PlayerUI:
+				players[player_ui.player_name.text] = float(int(player_ui.score)) if integer_score else float(player_ui.score)
+		config_file.set_value("Players", "players", players)
+	
 	var error: int = config_file.save(save_path)
 	if error:
 		push_error("An error occured while saving settings: ", error)
@@ -79,6 +91,11 @@ func load_settings() -> void:
 	integer_score = config_file.get_value("Settings", "integer_score", true)
 	persistent_players = config_file.get_value("Settings", "persistent_players", false)
 	normalized_history = config_file.get_value("Settings", "normalized_history", true)
+	
+	if persistent_players:
+		var player_scores: Dictionary[String, float] = config_file.get_value("Players", "players", {})
+		for player_name in player_scores:
+			Main.score.add_player(player_name, player_scores[player_name])
 	
 	
 func apply_settings() -> void:

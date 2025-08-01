@@ -56,10 +56,5 @@ setting_description = "If enabled, the history is resized to fit the amount of r
 Otherwise, rounds are displayed out of the total round number"
 setting_name = &"normalized_history"
 
-[node name="ApplyButton" type="Button" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Save Settings"
-
 [editable path="MarginContainer/VBoxContainer/ScoreCategory"]
 [editable path="MarginContainer/VBoxContainer/HistoryCategory"]

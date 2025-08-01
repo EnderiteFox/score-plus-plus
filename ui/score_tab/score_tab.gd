@@ -27,13 +27,7 @@ func _ready() -> void:
 	
 	
 func _on_add_player() -> void:
-	var player_ui: PlayerUI = player_ui_scene.instantiate()
-	player_list.add_child(player_ui)
-	
-	player_ui.selected.connect(_on_player_select.bind(player_ui))
-	player_ui.selected.emit()
-	
-	player_ui.deleted.connect(_on_player_delete.bind(player_ui))
+	add_player("", 0)
 
 	
 func _on_player_select(player_ui: PlayerUI) -> void:
@@ -99,3 +93,14 @@ func _on_edit_line_submit() -> void:
 			player_ui.score = value
 	)
 	
+	
+func add_player(player_name: String, score: float) -> void:
+	var player_ui: PlayerUI = player_ui_scene.instantiate()
+	player_list.add_child(player_ui)
+	player_ui.player_name.text = player_name
+	player_ui.score = score
+
+	player_ui.selected.connect(_on_player_select.bind(player_ui))
+	player_ui.selected.emit()
+
+	player_ui.deleted.connect(_on_player_delete.bind(player_ui))
