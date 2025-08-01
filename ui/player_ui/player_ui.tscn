@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://diusqu2gxbitm"]
+[gd_scene load_steps=3 format=3 uid="uid://diusqu2gxbitm"]
 
+[ext_resource type="Theme" uid="uid://b0iajoyy5w551" path="res://theme/ui_theme.tres" id="1_kbgyg"]
 [ext_resource type="Script" uid="uid://tgbdo22xiy1u" path="res://ui/player_ui/player_ui.gd" id="1_x5rrd"]
 
 [node name="PlayerUI" type="PanelContainer"]
 offset_right = 759.0
 offset_bottom = 108.0
+theme = ExtResource("1_kbgyg")
 script = ExtResource("1_x5rrd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -14,6 +16,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
+focus_mode = 0
 text = "Delete"
 
 [node name="PlayerName" type="LineEdit" parent="HBoxContainer"]

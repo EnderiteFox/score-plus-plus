@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://b0iajoyy5w551"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://b0iajoyy5w551"]
 
 [sub_resource type="SystemFont" id="SystemFont_v6wrm"]
 font_names = PackedStringArray("Monospace")
@@ -65,6 +65,14 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.5, 0.5, 0.5, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7mgs"]
+bg_color = Color(0.162066, 0.162066, 0.162065, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqcwn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 draw_center = false
@@ -116,7 +124,7 @@ MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
-PanelContainer/styles/panel = null
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_p7mgs")
 Selected/base_type = &"PanelContainer"
 Selected/styles/panel = SubResource("StyleBoxFlat_eqcwn")
 SettingsCategory/base_type = &"PanelContainer"
@@ -132,7 +140,7 @@ SettingsCheckboxTitle/styles/normal = SubResource("StyleBoxEmpty_7uusv")
 SettingsTitle/base_type = &"Label"
 SettingsTitle/colors/font_color = Color(1, 1, 1, 1)
 SettingsTitle/styles/normal = SubResource("StyleBoxEmpty_v6wrm")
-TabContainer/font_sizes/font_size = 29
+TabContainer/font_sizes/font_size = 45
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_27v6b")
 VBoxContainer/constants/separation = 10
 VSeparator/constants/separation = 10
