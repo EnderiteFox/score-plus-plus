@@ -10,7 +10,6 @@ signal deleted
 
 var score: float = 0:
 	set(new_score):
-		# TODO: Add a setting to choose weither we want integers or floats
 		if Main.settings.integer_score:
 			score = int(new_score)
 			score_label.text = str(int(new_score))
@@ -42,5 +41,4 @@ func select() -> void:
 	
 func unselect() -> void:
 	self.theme_type_variation = ""
-	player_name.focus_mode = FOCUS_NONE
-			
+	player_name.release_focus()
