@@ -1,18 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfct5sudsqj76"]
+[gd_scene load_steps=5 format=3 uid="uid://bfct5sudsqj76"]
 
 [ext_resource type="PackedScene" uid="uid://b0lhhhsq3cx0u" path="res://ui/score_tab/score_tab.tscn" id="2_7miss"]
 [ext_resource type="PackedScene" uid="uid://wfoawl85lwko" path="res://ui/history_tab/history_tab.tscn" id="3_3jxcf"]
 [ext_resource type="PackedScene" uid="uid://vvix07tir73f" path="res://ui/settings_tab/settings_tab.tscn" id="3_bsycw"]
+[ext_resource type="Script" uid="uid://cfuuomxtwhv7x" path="res://ui/vkeyboard_resizer.gd" id="4_bsycw"]
 
-[node name="MainUI" type="Control"]
-layout_mode = 3
+[node name="MainUI" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="ColorRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +27,7 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0.2, 0.2, 0.2, 1)
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,16 +37,20 @@ grow_vertical = 2
 current_tab = 0
 clip_tabs = false
 
-[node name="Score" parent="TabContainer" instance=ExtResource("2_7miss")]
+[node name="Score" parent="Control/TabContainer" instance=ExtResource("2_7miss")]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="History" parent="TabContainer" instance=ExtResource("3_3jxcf")]
+[node name="History" parent="Control/TabContainer" instance=ExtResource("3_3jxcf")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Settings" parent="TabContainer" instance=ExtResource("3_bsycw")]
+[node name="Settings" parent="Control/TabContainer" instance=ExtResource("3_bsycw")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="KeyboardResizer" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("4_bsycw")
