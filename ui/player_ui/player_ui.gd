@@ -1,44 +1,60 @@
 class_name PlayerUI
 extends PanelContainer
 
-signal selected
-signal deleted
+var player: Player
 
 @onready var delete_button: Button = %DeleteButton
 @onready var player_name: LineEdit = %PlayerName
 @onready var score_label: Label = %PlayerScore
 
-var score: float = 0:
-	set(new_score):
-		if Main.settings.integer_score:
-			score = int(new_score)
-			score_label.text = str(int(new_score))
-		else:
-			score = new_score
-			score_label.text = str(score)
-		
-
 func _ready() -> void:
-	delete_button.pressed.connect(_on_player_delete)
-	player_name.focus_entered.connect(selected.emit)
-	player_name.text_changed.connect(selected.emit.unbind(1))
+	Main.player_removed.connect(_on_player_removed)
+	Main.player_modified.connect(_on_player_modified)
 
+	Main.score.player_selected.connect(_on_player_selected)
+	Main.score.player_unselected.connect(_on_player_unselected)
 	
-func _on_player_delete() -> void:
-	deleted.emit()
-	self.queue_free()
+	delete_button.pressed.connect(Main.remove_player.bind(self.player))
+	player_name.focus_entered.connect(Main.score.player_selected.emit.bind(self.player))
+	player_name.text_changed.connect(_on_text_changed)
 	
 	
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			selected.emit()
-			
-			
-func select() -> void:
-	self.theme_type_variation = "Selected"
+			Main.score.select_player(self.player)
 	
 	
-func unselect() -> void:
-	self.theme_type_variation = ""
-	player_name.release_focus()
+func _on_player_removed(removed_player: Player) -> void:
+	if removed_player == self.player:
+		self.queue_free()
+		
+		
+func _on_player_modified(modified_player: Player) -> void:
+	if modified_player == self.player:
+		update_infos()
+	
+	
+func _on_player_selected(selected_player: Player) -> void:
+	if selected_player == self.player:
+		self.theme_type_variation = "Selected"
+	
+	
+func _on_player_unselected(unselected_player: Player) -> void:
+	if unselected_player == self.player:
+		self.theme_type_variation = ""
+		player_name.release_focus()
+		
+		
+func _on_text_changed(new_text: String) -> void:
+	var caret_pos: int = player_name.caret_column
+	Main.score.select_player(self.player)
+	self.player.name = new_text
+	player_name.edit()
+	player_name.caret_column = caret_pos
+		
+		
+func update_infos() -> void:
+	player_name.text = player.name
+	score_label.text = str(int(player.score)) if Main.settings.integer_score else str(player.score)
+		

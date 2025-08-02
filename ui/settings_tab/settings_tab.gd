@@ -42,19 +42,13 @@ func _on_set_integer_score(new_val: bool) -> void:
 		integer_score_checkbox.pressed = new_val
 		
 	if new_val:
-		for player_ui in Main.score.player_list.get_children():
-			if player_ui is PlayerUI:
-				player_ui.score = int(player_ui.score)
+		for player in Main.players:
+			player.score = player.score
 				
 	Main.score.numpad_dot_button.visible = not new_val
 
 
 func save_settings() -> void:
-	# If integer scores are enabled, round player scores
-	if integer_score:
-		for player_ui in Main.score.player_list.get_children():
-			player_ui.score = int(player_ui.score)
-	
 	var config_file := ConfigFile.new()
 	
 	config_file.set_value("Settings", "integer_score", integer_score)
@@ -63,9 +57,8 @@ func save_settings() -> void:
 	
 	if persistent_players:
 		var players: Dictionary[String, float] = {}
-		for player_ui in Main.score.player_list.get_children():
-			if player_ui is PlayerUI:
-				players[player_ui.player_name.text] = float(int(player_ui.score)) if integer_score else float(player_ui.score)
+		for player in Main.players:
+			players[player.name] = player.score
 		config_file.set_value("Players", "players", players)
 	
 	var error: int = config_file.save(save_path)
@@ -94,7 +87,9 @@ func load_settings() -> void:
 	if persistent_players:
 		var player_scores: Dictionary[String, float] = config_file.get_value("Players", "players", {})
 		for player_name in player_scores:
-			Main.score.add_player(player_name, player_scores[player_name])
+			var player: Player = Main.add_player()
+			player.name = player_name	
+			player.score = player_scores[player_name]
 	
 	
 func apply_settings() -> void:
