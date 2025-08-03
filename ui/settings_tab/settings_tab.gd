@@ -3,8 +3,14 @@ extends Control
 
 const save_path: String = "user://settings.ini"
 
+const ROUND_COUNT_NONE: int = -1
+const ROUND_COUNT_INFINITE: int = 0
+
+signal setting_changed(setting_name: StringName, value: Variant)
+
 @export var integer_score_checkbox: SettingsCheckbox
 @export var persistent_players_checkbox: SettingsCheckbox
+@export var round_count_int: SettingsInt
 @export var normalized_history_checkbox: SettingsCheckbox
 # TODO: Implement score history
 # TODO: Implement normalized history
@@ -14,14 +20,18 @@ var integer_score: bool: set = _on_set_integer_score
 var persistent_players: bool:
 	set(new_val):
 		persistent_players = new_val
-		if persistent_players_checkbox and persistent_players_checkbox.pressed != new_val:
-			persistent_players_checkbox.pressed = new_val
+		setting_changed.emit(&"persistent_players", new_val)
+
+var round_count: int:
+	set(new_val):
+		round_count = new_val
+		setting_changed.emit(&"round_count", new_val)
 
 var normalized_history: bool:
 	set(new_val):
 		normalized_history = new_val
-		if persistent_players_checkbox and normalized_history_checkbox.pressed != new_val:
-			normalized_history_checkbox.pressed = new_val
+		setting_changed.emit(&"normalized_history", new_val)
+
 
 func _ready() -> void:
 	Main.settings = self
@@ -38,8 +48,7 @@ func _notification(notif) -> void:
 	
 func _on_set_integer_score(new_val: bool) -> void:
 	integer_score = new_val
-	if integer_score_checkbox.pressed != new_val:
-		integer_score_checkbox.pressed = new_val
+	setting_changed.emit(&"integer_score", new_val)
 		
 	if new_val:
 		for player in Main.players:
@@ -53,6 +62,7 @@ func save_settings() -> void:
 	
 	config_file.set_value("Settings", "integer_score", integer_score)
 	config_file.set_value("Settings", "persistent_players", persistent_players)
+	config_file.set_value("Settings", "round_count", round_count)
 	config_file.set_value("Settings", "normalized_history", normalized_history)
 	
 	if persistent_players:
@@ -82,6 +92,7 @@ func load_settings() -> void:
 		
 	integer_score = config_file.get_value("Settings", "integer_score", true)
 	persistent_players = config_file.get_value("Settings", "persistent_players", true)
+	round_count = config_file.get_value("Settings", "round_count", ROUND_COUNT_INFINITE)
 	normalized_history = config_file.get_value("Settings", "normalized_history", true)
 	
 	if persistent_players:

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://b0iajoyy5w551"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://b0iajoyy5w551"]
 
 [sub_resource type="SystemFont" id="SystemFont_v6wrm"]
 font_names = PackedStringArray("Monospace")
@@ -86,12 +86,36 @@ expand_margin_top = 3.0
 expand_margin_right = 3.0
 expand_margin_bottom = 3.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtkyl"]
+bg_color = Color(0.548962, 0.548963, 0.548962, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.366594, 0.366595, 0.366594, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r5ox"]
 bg_color = Color(0.4, 0.4, 0.4, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8aw70"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7uusv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p73w"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.517184, 0.517184, 0.517184, 1)
+expand_margin_left = 10.0
+expand_margin_top = 3.0
+expand_margin_right = 10.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6wrm"]
 
@@ -127,6 +151,9 @@ MarginContainer/constants/margin_top = 10
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_p7mgs")
 Selected/base_type = &"PanelContainer"
 Selected/styles/panel = SubResource("StyleBoxFlat_eqcwn")
+SettingIntButton/base_type = &"Button"
+SettingIntButton/font_sizes/font_size = 60
+SettingIntButton/styles/normal = SubResource("StyleBoxFlat_xtkyl")
 SettingsCategory/base_type = &"PanelContainer"
 SettingsCategory/styles/panel = SubResource("StyleBoxFlat_6r5ox")
 SettingsCheckboxDescription/base_type = &"Label"
@@ -137,6 +164,10 @@ SettingsCheckboxTitle/base_type = &"Label"
 SettingsCheckboxTitle/colors/font_color = Color(1, 1, 1, 1)
 SettingsCheckboxTitle/font_sizes/font_size = 32
 SettingsCheckboxTitle/styles/normal = SubResource("StyleBoxEmpty_7uusv")
+SettingsIntLabel/base_type = &"LineEdit"
+SettingsIntLabel/colors/font_color = Color(1, 1, 1, 1)
+SettingsIntLabel/font_sizes/font_size = 35
+SettingsIntLabel/styles/normal = SubResource("StyleBoxFlat_7p73w")
 SettingsTitle/base_type = &"Label"
 SettingsTitle/colors/font_color = Color(1, 1, 1, 1)
 SettingsTitle/styles/normal = SubResource("StyleBoxEmpty_v6wrm")
