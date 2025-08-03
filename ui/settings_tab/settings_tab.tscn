@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://vvix07tir73f"]
+[gd_scene load_steps=5 format=3 uid="uid://vvix07tir73f"]
 
 [ext_resource type="Script" uid="uid://c45uelf7bfy6p" path="res://ui/settings_tab/settings_tab.gd" id="1_3jpxy"]
 [ext_resource type="PackedScene" uid="uid://b6e8lrm7eim70" path="res://ui/settings_tab/settings_category/settings_category.tscn" id="2_knp5a"]
 [ext_resource type="PackedScene" uid="uid://nvq6idev7pfb" path="res://ui/settings_tab/settings_checkbox/settings_checkbox.tscn" id="3_up8pi"]
+[ext_resource type="PackedScene" uid="uid://cfydsobfmlnf2" path="res://ui/settings_tab/settings_int/settings_int.tscn" id="4_jslsb"]
 
-[node name="SettingsTab" type="ScrollContainer" node_paths=PackedStringArray("integer_score_checkbox", "persistent_players_checkbox", "normalized_history_checkbox")]
+[node name="SettingsTab" type="ScrollContainer" node_paths=PackedStringArray("integer_score_checkbox", "persistent_players_checkbox", "round_count_int", "normalized_history_checkbox")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_3jpxy")
 integer_score_checkbox = NodePath("MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/IntegerScore")
 persistent_players_checkbox = NodePath("MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/PersistentPlayers")
+round_count_int = NodePath("MarginContainer/VBoxContainer/RoundsCategory/MarginContainer/VBoxContainer/RoundCountInt")
 normalized_history_checkbox = NodePath("MarginContainer/VBoxContainer/HistoryCategory/MarginContainer/VBoxContainer/NormalizedHistory")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -32,15 +34,52 @@ text = "Score"
 [node name="IntegerScore" parent="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer" index="1" instance=ExtResource("3_up8pi")]
 layout_mode = 2
 size_flags_horizontal = 1
-setting_title = "Integer Scores"
-setting_description = "If disabled, player scores can be decimal numbers"
 setting_name = &"integer_score"
+metadata/_edit_group_ = true
+
+[node name="SettingTitle" parent="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/IntegerScore/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "Integer Scores"
+
+[node name="SettingDescription" parent="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/IntegerScore/MarginContainer/VBoxContainer" index="1"]
+text = "If disabled, player scores can be decimal numbers."
 
 [node name="PersistentPlayers" parent="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer" index="2" instance=ExtResource("3_up8pi")]
 layout_mode = 2
-setting_title = "Persistent Players"
-setting_description = "Saves players on app exit"
 setting_name = &"persistent_players"
+metadata/_edit_group_ = true
+
+[node name="SettingTitle" parent="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/PersistentPlayers/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "Save Players"
+
+[node name="SettingDescription" parent="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/PersistentPlayers/MarginContainer/VBoxContainer" index="1"]
+text = "Saves players when exiting."
+
+[node name="RoundsCategory" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_knp5a")]
+layout_mode = 2
+title = "Rounds"
+
+[node name="CategoryTitle" parent="MarginContainer/VBoxContainer/RoundsCategory/MarginContainer/VBoxContainer" index="0"]
+text = "Rounds"
+
+[node name="RoundCountInt" parent="MarginContainer/VBoxContainer/RoundsCategory/MarginContainer/VBoxContainer" index="1" instance=ExtResource("4_jslsb")]
+unique_name_in_owner = true
+layout_mode = 2
+text_display_values = Dictionary[int, String]({
+-1: "None",
+0: "Infinite"
+})
+min_value = -1
+setting_name = &"round_count"
+metadata/_edit_group_ = true
+
+[node name="SettingTitle" parent="MarginContainer/VBoxContainer/RoundsCategory/MarginContainer/VBoxContainer/RoundCountInt/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "Round Count"
+
+[node name="SettingDescription" parent="MarginContainer/VBoxContainer/RoundsCategory/MarginContainer/VBoxContainer/RoundCountInt/MarginContainer/VBoxContainer" index="1"]
+text = "The number of rounds in the game.
+Used to keep track of which scores are missing for the current round, and for the game history.
+None disables round score checks.
+Infinite adds more rounds are needed."
 
 [node name="HistoryCategory" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_knp5a")]
 layout_mode = 2
@@ -51,10 +90,21 @@ text = "History"
 
 [node name="NormalizedHistory" parent="MarginContainer/VBoxContainer/HistoryCategory/MarginContainer/VBoxContainer" index="1" instance=ExtResource("3_up8pi")]
 layout_mode = 2
-setting_title = "Normalized History"
-setting_description = "If enabled, the history is resized to fit the amount of rounds that have been played.
-Otherwise, rounds are displayed out of the total round number"
 setting_name = &"normalized_history"
+metadata/_edit_group_ = true
+
+[node name="SettingTitle" parent="MarginContainer/VBoxContainer/HistoryCategory/MarginContainer/VBoxContainer/NormalizedHistory/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "Normalized History"
+
+[node name="SettingDescription" parent="MarginContainer/VBoxContainer/HistoryCategory/MarginContainer/VBoxContainer/NormalizedHistory/MarginContainer/VBoxContainer" index="1"]
+text = "If enabled, the history is resized to fit the amount of rounds that have been played.
+Otherwise, rounds are displayed out of the total round number.
+Always enabled if the round count is set to Infinite."
 
 [editable path="MarginContainer/VBoxContainer/ScoreCategory"]
+[editable path="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/IntegerScore"]
+[editable path="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/PersistentPlayers"]
+[editable path="MarginContainer/VBoxContainer/RoundsCategory"]
+[editable path="MarginContainer/VBoxContainer/RoundsCategory/MarginContainer/VBoxContainer/RoundCountInt"]
 [editable path="MarginContainer/VBoxContainer/HistoryCategory"]
+[editable path="MarginContainer/VBoxContainer/HistoryCategory/MarginContainer/VBoxContainer/NormalizedHistory"]
