@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://vvix07tir73f"]
+[gd_scene load_steps=6 format=3 uid="uid://vvix07tir73f"]
 
 [ext_resource type="Script" uid="uid://c45uelf7bfy6p" path="res://ui/settings_tab/settings_tab.gd" id="1_3jpxy"]
 [ext_resource type="PackedScene" uid="uid://b6e8lrm7eim70" path="res://ui/settings_tab/settings_category/settings_category.tscn" id="2_knp5a"]
 [ext_resource type="PackedScene" uid="uid://nvq6idev7pfb" path="res://ui/settings_tab/settings_checkbox/settings_checkbox.tscn" id="3_up8pi"]
 [ext_resource type="PackedScene" uid="uid://cfydsobfmlnf2" path="res://ui/settings_tab/settings_int/settings_int.tscn" id="4_jslsb"]
+[ext_resource type="PackedScene" uid="uid://sye3egqsifm3" path="res://ui/settings_tab/settings_color/settings_color.tscn" id="5_71oob"]
 
 [node name="SettingsTab" type="ScrollContainer" node_paths=PackedStringArray("integer_score_checkbox", "persistent_players_checkbox", "round_count_int", "normalized_history_checkbox")]
 anchors_preset = 15
@@ -101,6 +102,50 @@ text = "If enabled, the history is resized to fit the amount of rounds that have
 Otherwise, rounds are displayed out of the total round number.
 Always enabled if the round count is set to Infinite."
 
+[node name="BackgroundCategory" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_knp5a")]
+layout_mode = 2
+title = "Background"
+
+[node name="CategoryTitle" parent="MarginContainer/VBoxContainer/BackgroundCategory/MarginContainer/VBoxContainer" index="0"]
+text = "Background"
+
+[node name="SettingsColor" parent="MarginContainer/VBoxContainer/BackgroundCategory/MarginContainer/VBoxContainer" index="1" instance=ExtResource("5_71oob")]
+layout_mode = 2
+setting_name = &"background_color"
+metadata/_edit_group_ = true
+
+[node name="SettingTitle" parent="MarginContainer/VBoxContainer/BackgroundCategory/MarginContainer/VBoxContainer/SettingsColor/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+text = "Background Color"
+
+[node name="SettingDescription" parent="MarginContainer/VBoxContainer/BackgroundCategory/MarginContainer/VBoxContainer/SettingsColor/MarginContainer/VBoxContainer" index="1"]
+text = "Sets the color of the background."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BackgroundCategory/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="ColorBackgroundButton" type="Button" parent="MarginContainer/VBoxContainer/BackgroundCategory/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SettingIntButton"
+theme_override_font_sizes/font_size = 45
+text = "Set to color"
+
+[node name="ImageBackgroundButton" type="Button" parent="MarginContainer/VBoxContainer/BackgroundCategory/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SettingIntButton"
+theme_override_font_sizes/font_size = 45
+text = "Set to image"
+
+[node name="ResetBackgroundButton" type="Button" parent="MarginContainer/VBoxContainer/BackgroundCategory/MarginContainer/VBoxContainer" index="3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SettingIntButton"
+theme_override_font_sizes/font_size = 45
+text = "Reset Background"
+
 [editable path="MarginContainer/VBoxContainer/ScoreCategory"]
 [editable path="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/IntegerScore"]
 [editable path="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/PersistentPlayers"]
@@ -108,3 +153,5 @@ Always enabled if the round count is set to Infinite."
 [editable path="MarginContainer/VBoxContainer/RoundsCategory/MarginContainer/VBoxContainer/RoundCountInt"]
 [editable path="MarginContainer/VBoxContainer/HistoryCategory"]
 [editable path="MarginContainer/VBoxContainer/HistoryCategory/MarginContainer/VBoxContainer/NormalizedHistory"]
+[editable path="MarginContainer/VBoxContainer/BackgroundCategory"]
+[editable path="MarginContainer/VBoxContainer/BackgroundCategory/MarginContainer/VBoxContainer/SettingsColor"]
