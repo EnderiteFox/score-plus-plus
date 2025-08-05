@@ -178,7 +178,7 @@ func load_settings() -> void:
 			current_background_path = config_file.get_value("Settings", "background_image_path", "")
 	
 	if persistent_players:
-		var player_scores: Dictionary[String, float] = config_file.get_value("Players", "players", {})
+		var player_scores: Dictionary = config_file.get_value("Players", "players", {})
 		for player_name in player_scores:
 			var player: Player = Main.add_player()
 			player.name = player_name	
