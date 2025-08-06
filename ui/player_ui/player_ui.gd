@@ -15,7 +15,7 @@ func _ready() -> void:
 	Main.score.player_unselected.connect(_on_player_unselected)
 	
 	delete_button.pressed.connect(Main.remove_player.bind(self.player))
-	player_name.focus_entered.connect(Main.score.player_selected.emit.bind(self.player))
+	player_name.focus_entered.connect(Main.score.select_player.bind(self.player))
 	player_name.text_changed.connect(_on_text_changed)
 	
 	
