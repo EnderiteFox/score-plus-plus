@@ -53,7 +53,7 @@ func _gui_input(event: InputEvent) -> void:
 	
 func _on_player_selected(player: Player) -> void:
 	if not player_uis.has(player):
-		push_error("Missing player key in player UI dict")
+		Main.push_alert("Internal error:\nMissing player key in player UI dict")
 		return
 		
 	selected_player = player
@@ -93,14 +93,13 @@ func get_edit_line_value() -> float:
 	var error: Error = expression.parse(player_edit_line.text)
 	
 	if error != OK:
-		# TODO: Handle error
-		push_error(expression.get_error_text())
+		Main.push_alert("Error while parsing expression:\n%s" % expression.get_error_text())
 		return 0.0
 		
 	var value = expression.execute()
 	
 	if expression.has_execute_failed():
-		# TODO: Handle error
+		Main.push_alert("Invalid expression")
 		return 0.0
 		
 	player_edit_line.text = ""

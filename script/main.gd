@@ -15,6 +15,8 @@ signal main_ui_ready
 
 var players: Array[Player]
 
+var alert_popup_scene: PackedScene = preload("uid://dh8m1yy1ho1ed")
+
 
 func _ready() -> void:
 	OS.request_permission("android.permission.READ_EXTERNAL_STORAGE")
@@ -42,3 +44,10 @@ func add_player() -> Player:
 func remove_player(player: Player) -> void:
 	player_removed.emit(player)
 	players.erase(player)
+
+
+func push_alert(message: String) -> void:
+	var alert_popup: AlertPopup = alert_popup_scene.instantiate()
+	self.add_sibling(alert_popup)
+	alert_popup.set_message(message)
+	print("Alert popup:\n", message)

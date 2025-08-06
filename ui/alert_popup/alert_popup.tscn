@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh8m1yy1ho1ed"]
+
+[ext_resource type="Script" uid="uid://cm46tej7f6ldh" path="res://ui/alert_popup/alert_popup.gd" id="1_qddmp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5aqn"]
+bg_color = Color(0, 0, 0, 0.27451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qddmp"]
+bg_color = Color(0.366595, 0.366595, 0.366594, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_qddmp")
+
+[node name="AlertPopup" type="PanelContainer" parent="."]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_g5aqn")
+
+[node name="PopupContainer" type="PanelContainer" parent="AlertPopup"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qddmp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AlertPopup/PopupContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="MessageLabel" type="Label" parent="AlertPopup/PopupContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SettingsCheckboxTitle"
+text = "An error occured"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DismissButton" type="Button" parent="AlertPopup/PopupContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"SettingIntButton"
+theme_override_constants/align_to_largest_stylebox = 1
+theme_override_font_sizes/font_size = 40
+text = "Ok"

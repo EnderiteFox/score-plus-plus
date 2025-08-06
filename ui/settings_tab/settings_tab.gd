@@ -96,14 +96,14 @@ func _on_background_image_pressed() -> void:
 	)
 	
 	if error != OK:
-		push_error(error_string(error))
+		Main.push_alert("Error while selecting file:\n%s" % error_string(error))
 		
 		
 func _on_background_image_selected(status: bool, selected_paths: PackedStringArray, selected_filter_index: int) -> void:
 	if status:
 		current_background_path = selected_paths[selected_filter_index]
 	else:
-		push_error("Error while selecting image, possibly missing permissions")
+		Main.push_alert("Error while selecting image.\nMake sure to allow file access permissions")
 
 
 func _on_set_background_path(path: String) -> void:
@@ -147,7 +147,7 @@ func save_settings() -> void:
 	
 	var error: int = config_file.save(save_path)
 	if error:
-		push_error("An error occured while saving settings: ", error)
+		Main.push_alert("An error occured while saving settings:\n%s" % error)
 	
 	
 func load_settings() -> void:
@@ -158,10 +158,10 @@ func load_settings() -> void:
 		Error.OK:
 			pass
 		Error.ERR_FILE_NOT_FOUND:
+			# Not an error
 			print("Settings file not found, using default values")
 		_:
-			# TODO: Handle error correctly (add a popup)
-			push_error("An error occured while loading settings: ", error)
+			Main.push_alert("An error occured while loading settings:\n%s" % error)
 			return
 		
 	integer_score = config_file.get_value("Settings", "integer_score", true)
