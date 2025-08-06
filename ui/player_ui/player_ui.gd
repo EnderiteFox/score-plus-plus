@@ -47,14 +47,11 @@ func _on_player_unselected(unselected_player: Player) -> void:
 		
 		
 func _on_text_changed(new_text: String) -> void:
-	var caret_pos: int = player_name.caret_column
-	Main.score.select_player(self.player)
+	Main.player_modified.disconnect(_on_player_modified)
 	self.player.name = new_text
-	player_name.edit()
-	player_name.caret_column = caret_pos
-		
-		
+	Main.player_modified.connect(_on_player_modified)
+	
+	
 func update_infos() -> void:
 	player_name.text = player.name
 	score_label.text = str(int(player.score)) if Main.settings.integer_score else str(player.score)
-		
