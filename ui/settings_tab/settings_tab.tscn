@@ -55,6 +55,12 @@ text = "Save Players"
 [node name="SettingDescription" parent="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer/PersistentPlayers/MarginContainer/VBoxContainer" index="1"]
 text = "Saves players when exiting."
 
+[node name="ResetScoresButton" type="Button" parent="MarginContainer/VBoxContainer/ScoreCategory/MarginContainer/VBoxContainer" index="3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SettingIntButton"
+text = "Reset scores"
+
 [node name="RoundsCategory" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_knp5a")]
 layout_mode = 2
 title = "Rounds"
