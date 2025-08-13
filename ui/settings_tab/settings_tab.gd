@@ -25,6 +25,7 @@ enum BackgroundType {
 @onready var background_color_button: Button = %ColorBackgroundButton
 @onready var background_image_button: Button = %ImageBackgroundButton
 @onready var background_reset_button: Button = %ResetBackgroundButton
+@onready var reset_scores_button: Button = %ResetScoresButton
 
 var integer_score: bool: set = _on_set_integer_score
 
@@ -57,6 +58,7 @@ func _ready() -> void:
 	background_color_button.pressed.connect(_on_background_color_pressed)
 	background_image_button.pressed.connect(_on_background_image_pressed)
 	background_reset_button.pressed.connect(_on_background_reset_pressed)
+	reset_scores_button.pressed.connect(_on_reset_scores_pressed)
 	load_settings()
 	
 	
@@ -104,6 +106,11 @@ func _on_background_image_selected(status: bool, selected_paths: PackedStringArr
 		current_background_path = selected_paths[selected_filter_index]
 	else:
 		Main.push_alert("Error while selecting image.\nMake sure to allow file access permissions")
+		
+		
+func _on_reset_scores_pressed() -> void:
+	for player in Main.players:
+		player.score = 0
 
 
 func _on_set_background_path(path: String) -> void:
