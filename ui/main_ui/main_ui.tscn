@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfct5sudsqj76"]
+[gd_scene load_steps=8 format=3 uid="uid://bfct5sudsqj76"]
 
 [ext_resource type="Script" uid="uid://bis66l6e6xn3u" path="res://ui/main_ui/main_ui.gd" id="1_bp13i"]
 [ext_resource type="PackedScene" uid="uid://b0lhhhsq3cx0u" path="res://ui/score_tab/score_tab.tscn" id="2_7miss"]
+[ext_resource type="Script" uid="uid://dyw8cuos8pgt3" path="res://script/tab_buttons.gd" id="2_c7c5c"]
 [ext_resource type="PackedScene" uid="uid://wfoawl85lwko" path="res://ui/history_tab/history_tab.tscn" id="3_3jxcf"]
 [ext_resource type="PackedScene" uid="uid://vvix07tir73f" path="res://ui/settings_tab/settings_tab.tscn" id="3_bsycw"]
 [ext_resource type="Script" uid="uid://cfuuomxtwhv7x" path="res://ui/vkeyboard_resizer.gd" id="4_bsycw"]
@@ -44,29 +45,70 @@ grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_bp13i")
 expand_mode = 1
 
-[node name="TabContainer" type="TabContainer" parent="Control"]
+[node name="TabsContainer" type="Control" parent="Control" node_paths=PackedStringArray("buttons")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
-clip_tabs = false
+script = ExtResource("2_c7c5c")
+buttons = {
+NodePath("VBoxContainer/HBoxContainer/ScoreTabButton"): NodePath("VBoxContainer/Tabs/ScoreTab"),
+NodePath("VBoxContainer/HBoxContainer/HistoryTabButton"): NodePath("VBoxContainer/Tabs/HistoryTab"),
+NodePath("VBoxContainer/HBoxContainer/SettingsTabButton"): NodePath("VBoxContainer/Tabs/SettingsTab")
+}
 
-[node name="Score" parent="Control/TabContainer" instance=ExtResource("2_7miss")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabsContainer/VBoxContainer"]
 layout_mode = 2
-metadata/_tab_index = 0
+size_flags_vertical = 0
 
-[node name="History" parent="Control/TabContainer" instance=ExtResource("3_3jxcf")]
+[node name="ScoreTabButton" type="Button" parent="Control/TabsContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+focus_mode = 0
+theme_type_variation = &"TabButtonSelected"
+text = "Score"
+
+[node name="HistoryTabButton" type="Button" parent="Control/TabsContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+focus_mode = 0
+theme_type_variation = &"TabButton"
+text = "History"
+
+[node name="SettingsTabButton" type="Button" parent="Control/TabsContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+focus_mode = 0
+theme_type_variation = &"TabButton"
+text = "Settings"
+
+[node name="Tabs" type="Control" parent="Control/TabsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScoreTab" parent="Control/TabsContainer/VBoxContainer/Tabs" instance=ExtResource("2_7miss")]
+layout_mode = 1
+
+[node name="HistoryTab" parent="Control/TabsContainer/VBoxContainer/Tabs" instance=ExtResource("3_3jxcf")]
 visible = false
-layout_mode = 2
-metadata/_tab_index = 1
+layout_mode = 1
 
-[node name="Settings" parent="Control/TabContainer" instance=ExtResource("3_bsycw")]
+[node name="SettingsTab" parent="Control/TabsContainer/VBoxContainer/Tabs" instance=ExtResource("3_bsycw")]
 visible = false
-layout_mode = 2
-metadata/_tab_index = 2
+layout_mode = 1
 
 [node name="KeyboardResizer" type="Control" parent="."]
 layout_mode = 2
