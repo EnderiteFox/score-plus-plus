@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://b0iajoyy5w551"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://b0iajoyy5w551"]
 
 [sub_resource type="SystemFont" id="SystemFont_v6wrm"]
 font_names = PackedStringArray("Monospace")
@@ -119,6 +119,15 @@ expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6wrm"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhl8p"]
+bg_color = Color(0.473976, 0.473976, 0.473975, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj2gf"]
+bg_color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if7g6"]
+bg_color = Color(0.454524, 0.454524, 0.454524, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27v6b"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_v6wrm"]
@@ -171,6 +180,15 @@ SettingsIntLabel/styles/normal = SubResource("StyleBoxFlat_7p73w")
 SettingsTitle/base_type = &"Label"
 SettingsTitle/colors/font_color = Color(1, 1, 1, 1)
 SettingsTitle/styles/normal = SubResource("StyleBoxEmpty_v6wrm")
+TabButton/base_type = &"Button"
+TabButton/font_sizes/font_size = 50
+TabButton/styles/hover = SubResource("StyleBoxFlat_xhl8p")
+TabButton/styles/normal = SubResource("StyleBoxFlat_yj2gf")
+TabButtonSelected/base_type = &"Button"
+TabButtonSelected/font_sizes/font_size = 50
+TabButtonSelected/styles/hover = SubResource("StyleBoxFlat_if7g6")
+TabButtonSelected/styles/normal = SubResource("StyleBoxFlat_if7g6")
+TabButtonSelected/styles/pressed = SubResource("StyleBoxFlat_if7g6")
 TabContainer/font_sizes/font_size = 45
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_27v6b")
 VBoxContainer/constants/separation = 10
