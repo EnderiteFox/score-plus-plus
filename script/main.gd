@@ -48,6 +48,7 @@ func remove_player(player: Player) -> void:
 
 func push_alert(message: String) -> void:
 	var alert_popup: AlertPopup = alert_popup_scene.instantiate()
-	self.add_sibling(alert_popup)
+	self.add_sibling.call_deferred(alert_popup)
+	await alert_popup.ready
 	alert_popup.set_message(message)
 	print("Alert popup:\n", message)
