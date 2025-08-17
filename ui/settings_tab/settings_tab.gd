@@ -152,10 +152,7 @@ func save_settings() -> void:
 			config_file.set_value("Settings", "background_image_path", current_background_path)
 	
 	if persistent_players:
-		var players: Dictionary[String, float] = {}
-		for player in Main.players:
-			players[player.name] = player.score
-		config_file.set_value("Players", "players", players)
+		config_file.set_value("Players", "players", Main.players)
 	
 	var error: int = config_file.save(save_path)
 	if error:
@@ -198,8 +195,5 @@ func load_settings() -> void:
 			current_background_path = config_file.get_value("Settings", "background_image_path", "")
 	
 	if persistent_players:
-		var player_scores: Dictionary = config_file.get_value("Players", "players", {})
-		for player_name in player_scores:
-			var player: Player = Main.add_player()
-			player.name = player_name	
-			player.score = player_scores[player_name]
+		for player in config_file.get_value("Players", "players", []):
+			Main.load_player(player)

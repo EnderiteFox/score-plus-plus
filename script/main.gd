@@ -40,6 +40,12 @@ func add_player() -> Player:
 	player_added.emit(player)
 	return player
 	
+	
+func load_player(player: Player) -> void:
+	players.append(player)
+	player_added.emit(player)
+	player_modified.emit(player)
+	
 
 func remove_player(player: Player) -> void:
 	player_removed.emit(player)
