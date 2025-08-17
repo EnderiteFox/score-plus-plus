@@ -1,6 +1,9 @@
 class_name SettingsTab
 extends Control
 
+const CURRENT_SAVE_FILE_VERSION: int = 1
+const INVALID_SAVE_FILE_VERSION: int = 0
+
 const save_path: String = "user://settings.ini"
 
 const ROUND_COUNT_NONE: int = -1
@@ -134,6 +137,8 @@ func _on_background_reset_pressed() -> void:
 func save_settings() -> void:
 	var config_file := ConfigFile.new()
 	
+	config_file.set_value("Meta", "version", CURRENT_SAVE_FILE_VERSION)
+	
 	config_file.set_value("Settings", "integer_score", integer_score)
 	config_file.set_value("Settings", "persistent_players", persistent_players)
 	config_file.set_value("Settings", "round_count", round_count)
@@ -160,6 +165,7 @@ func save_settings() -> void:
 func load_settings() -> void:
 	var config_file := ConfigFile.new()
 	var error: int = config_file.load(save_path)
+	var check_file_version: bool = true
 
 	match(error):
 		Error.OK:
@@ -167,9 +173,16 @@ func load_settings() -> void:
 		Error.ERR_FILE_NOT_FOUND:
 			# Not an error
 			print("Settings file not found, using default values")
+			check_file_version = false
 		_:
 			Main.push_alert("An error occured while loading settings:\n%s" % error)
 			return
+	
+	if check_file_version:
+		var file_version: int = config_file.get_value("Meta", "version", INVALID_SAVE_FILE_VERSION)
+		if file_version != CURRENT_SAVE_FILE_VERSION:
+			Main.push_alert("Incompatible settings file version\nSettings will be set to the default values")
+			config_file = ConfigFile.new()
 		
 	integer_score = config_file.get_value("Settings", "integer_score", true)
 	persistent_players = config_file.get_value("Settings", "persistent_players", true)
